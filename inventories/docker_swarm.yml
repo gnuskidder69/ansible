@@ -1,0 +1,37 @@
+# Minimal example using local docker
+ plugin: docker_swarm
+# docker_host: unix://var/run/docker.sock
+#
+# # Minimal example using remote docker
+# plugin: docker_swarm
+# docker_host: tcp://my-docker-host:2375
+#
+# # Example using remote docker with unverified TLS
+# plugin: docker_swarm
+# docker_host: tcp://my-docker-host:2376
+# tls: yes
+#
+# # Example using remote docker with verified TLS and client certificate verification
+# plugin: docker_swarm
+# docker_host: tcp://my-docker-host:2376
+# validate_certs: yes
+# ca_cert: /somewhere/ca.pem
+# client_key: /somewhere/key.pem
+# client_cert: /somewhere/cert.pem
+#
+# # Example using constructed features to create groups and set ansible_host
+# plugin: docker_swarm
+# docker_host: tcp://my-docker-host:2375
+# strict: False
+# keyed_groups:
+#   # add e.g. x86_64 hosts to an arch_x86_64 group
+#     - prefix: arch
+#         key: 'Description.Platform.Architecture'
+#           # add e.g. linux hosts to an os_linux group
+#             - prefix: os
+#                 key: 'Description.Platform.OS'
+#                   # create a group per node label
+#                     # e.g. a node labeled w/ "production" ends up in group "label_production"
+#                       # hint: labels containing special characters will be converted to safe names
+#                         - key: 'Spec.Labels'
+#                             prefix: label
